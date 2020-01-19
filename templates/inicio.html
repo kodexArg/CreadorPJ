@@ -1,0 +1,83 @@
+{% extends 'bootstrap/base.html' %}
+{% block title %}{{ data.clase }} ({{ data.poder }} pts){% endblock %}
+{% block content %}
+   <div class="container p-1 my-1" id="conent">
+         <form method="GET" class="form-inline">
+            <div class="form-group">
+                  <div class="input-group  col-sm"">
+                     <select name="clase" class="custom-select">
+                        {% for o in opciones %}
+                           <option value="{{ o }}" {% if data['clase']==o %}SELECTED{% endif %}>{{ o }}</option>
+                        {% endfor %}
+                     </select>
+                  </div>
+               <div class="input-group  col-sm"">
+                     <select name="sexo" class="custom-select">
+                        <option value="Mujer" {% if data['sexo']=='Mujer' %}SELECTED{% endif %}>Mujer</option>
+                        <option value="Hombre" {% if data['sexo']=='Hombre' %}SELECTED{% endif %}>Hombre</option>
+                     </select>
+               </div>
+               <label class="control-label" for="poder">Poder:</label>
+               <div class="input-group col-sm">
+                  <input class="form-control" name="poder" type="number" value="{{ request.args.get('poder', 40) | safe }}">
+               </div>
+               {% if data['poder'] %}
+                  <button class="btn btn-primary  col-sm"" type="submit">Regenerar</button>
+                  <a class="btn btn-secondary col-sm" href="http://127.0.0.1:5000/">Borrar</a>
+               {% else %}
+                  <button class="btn btn-primary  col-sm"" type="submit">Generar</button>
+               {% endif %}
+            </div>
+         </form>
+   </div>
+
+   {% if data['poder'] %}
+
+   <div class="container" id="conent">
+      <div class="card-columns">
+         <div class="card border-secondary">
+            <img class="card-img-top" style="height:500px; width:350px" src="/static/img/{{ data['clase'] }}_{{ data['sexo'] }}_01.png" alt="{{ data['clase'] }}_{{ data['sexo'] }}_01.png">
+            <div class="card-body">
+               <table class="table table-sm">
+                  {% for key, value in atributos.iterrows() %}
+                  <tr">
+                     <td>
+                        {{ key }}
+                     </td>
+                     <td style="text-align: right;">
+                        {{ value[data.clase] }}
+                     </td>
+                  </tr>
+                  {% endfor %}
+               </table>
+            </div>
+         </div>
+         <div class="card border-secondary">
+            <div class="card-header">
+               <p class="card-text">
+                  <h4>{{ data.clase }} ({{ data.poder }} pts)</h4>
+               </p>
+            </div>
+            <div class="card-body">
+               <p class="card-text">
+                  <h4>Habilidades</h4>
+               </p>
+               <table class="table table-sm">
+                  {% for key, value in habilidades.iterrows() %}
+                  <tr style="color:{% if loop.index <= 3 %}#000000{% elif loop.index <= 6 %}#6e6e6e{% else %}#bdbdbd{% endif %}">
+                     <td>
+                        {{ key }}
+                     </td>
+                     <td style="text-align: right;">
+                        {{ value['VALOR'] }}
+                     </td>
+                  </tr>
+                  {% endfor %}
+               </table>
+            </div>
+         </div>
+      </div>
+   </div>
+
+   {% endif %}
+{% endblock %}

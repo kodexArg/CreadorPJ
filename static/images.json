@@ -1,0 +1,38 @@
+{
+    "001": {
+        "Indistinto": "1",
+        "Hombre": "0.5",
+        "Mujer": "0.3",
+        "Cultista": "0.7",
+        "Sectario": "1",
+        "Milicia": "0",
+        "Bribón": "0",
+        "Técnico": "0",
+        "Charlatán": "0",
+        "Sicario": "0"
+    },
+    "002": {
+        "Indistinto": "0.2",
+        "Hombre": "0.5",
+        "Mujer": "0.1",
+        "Cultista": "0",
+        "Sectario": "0",
+        "Milicia": "0",
+        "Bribón": "0",
+        "Técnico": "0",
+        "Charlatán": "0",
+        "Sicario": "0"
+    },
+    "003": {
+        "Indistinto": "0.2",
+        "Hombre": "0",
+        "Mujer": "1",
+        "Cultista": "0.3",
+        "Sectario": "1",
+        "Milicia": "0",
+        "Bribón": "0",
+        "Técnico": "0.0",
+        "Charlatán": "0.1",
+        "Sicario": "0"
+    }
+}

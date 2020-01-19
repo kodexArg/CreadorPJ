@@ -1,0 +1,267 @@
+{
+    "Cultista": {
+       "FÍSICO": {
+           "Lucha": "2",
+           "Armas Pesadas": "2"
+       },
+       "ASTUCIA": {
+           "Sigilo": "1"
+       },
+       "DESTREZA": {
+           "Esquivar": "3",
+           "Armas Pequeñas": "2",
+           "Armas Medianas": "1"
+       },
+       "MAGIA": {
+           "Vision Bruja": "3",
+           "Sexto Sentido": "1",
+           "Espiritismo": "3",
+           "Ocultismo": "3",
+           "Hipnotismo": "2"
+       },
+       "PERCEPCIÓN": {
+           "Advertir-Notar": "2",
+           "Rastrear": "1",
+           "Reflejos": "1",
+           "En guardia": "2",
+           "Armas Precisión": "1"
+       },
+       "VOLUNTAD": {
+           "Religion": "4",
+           "Concentracion": "3",
+           "Resistir el Mal": "3",
+           "Resistir el Dolor": "1",
+           "Coraje": "3"
+       },
+       "CARISMA": {
+           "Don de Mando": "3",
+           "Don de Gente": "3",
+           "Mentir": "2",
+           "Disfraz": "1"
+       },
+       "EDUCACIÓN": {
+           "Sabiduría Popular": "2",
+           "Sanación": "2"
+       }
+    },
+    "Milicia": {
+        "FÍSICO": {
+            "Atletismo": "2",
+            "Fuerza Bruta": "2",
+            "Resistencia": "3",
+            "Intimidar": "2",
+            "Lucha": "3",
+            "Armas Pesadas": "2"
+        },
+        "ASTUCIA": {
+            "Sigilo": "1",
+            "Táctica-Estrategia": "2",
+            "Explosivos": "2"
+        },
+        "DESTREZA": {
+            "Arrojar": "2",
+            "Esquivar": "3",
+            "Cabalgar": "1",
+            "Conducir": "2",
+            "Armas Pequeñas": "2",
+            "Armas Medianas": "2"
+        },
+        "MAGIA": {
+        },
+        "PERCEPCIÓN": {
+            "Advertir-Notar": "3",
+            "Rastrear": "1",
+            "Reflejos": "2",
+            "En guardia": "2",
+            "Armas Precisión": "1"
+        },
+        "VOLUNTAD": {
+            "Religion": "2",
+            "Resistir el Dolor": "3",
+            "Coraje": "2"
+        },
+        "CARISMA": {
+            "Don de Mando": "2",
+            "Mentir": "1",
+            "Disfraz": "1"
+        },
+        "EDUCACIÓN": {
+            "Mecánica": "1",
+            "Sabiduría Popular": "1",
+            "Sanación": "1"
+        }
+    },
+    "Bribón": {
+        "FÍSICO": {
+            "Atletismo": "3",
+            "Intimidar": "2",
+            "Lucha": "2",
+            "Armas Pesadas": "1"
+        },
+        "ASTUCIA": {
+            "Robo": "4",
+            "Sigilo": "3",
+            "Trampas y puertas": "4",
+            "Explosivos": "1"
+        },
+        "DESTREZA": {
+            "Arrojar": "2",
+            "Esquivar": "3",
+            "Trepar": "2",
+            "Conducir": "2",
+            "Armas Pequeñas": "3",
+            "Armas Medianas": "2"
+        },
+        "MAGIA": {
+            "Sexto Sentido": "1"
+        },
+        "PERCEPCIÓN": {
+            "Advertir-Notar": "3",
+            "Rastrear": "2",
+            "Reflejos": "3",
+            "Ballesta": "2",
+            "Armas Precisión": "2"
+        },
+        "VOLUNTAD": {
+            "Coraje": "1"
+        },
+        "CARISMA": {
+            "Mentir": "3",
+            "Sex Appeal": "3",
+            "Disfraz": "4"
+        },
+        "EDUCACIÓN": {
+            "Mecánica": "1",
+            "Sabiduría Popular": "2"
+        }
+    },
+    "Técnico": {
+        "FÍSICO": {
+            "Armas Pesadas": "3"
+        },
+        "ASTUCIA": {
+            "Robo": "1",
+            "Sigilo": "2",
+            "Trampas y puertas": "4",
+            "Explosivos": "4"
+        },
+        "DESTREZA": {
+            "Esquivar": "1",
+            "Conducir": "3",
+            "Pilotar": "1",
+            "Armas Pequeñas": "2",
+            "Armas Medianas": "2"
+        },
+        "MAGIA": {
+            "Sexto Sentido": "1"
+        },
+        "PERCEPCIÓN": {
+            "Reflejos": "1"
+        },
+        "VOLUNTAD": {
+            "Coraje": "2"
+        },
+        "CARISMA": {
+            "Mentir": "1"
+        },
+        "EDUCACIÓN": {
+            "Idiomas": "2",
+            "Criptografía": "3",
+            "Mecánica": "4",
+            "Tecnología": "4",
+            "Sabiduría Popular": "3",
+            "Sanación": "3"
+        }
+    },
+    "Charlatán": {
+           "FÍSICO": {
+               "Atletismo": "2",
+               "Lucha": "2",
+               "Resistencia": "1"
+           },
+           "ASTUCIA": {
+               "Sigilo": "3",
+               "Robo": "3",
+               "Trampas y puertas": "1",
+               "Táctica-Estrategia": "1",
+               "Intimidar": "2"
+           },
+           "DESTREZA": {
+               "Cabalgar": "2",
+               "Conducir": "2",
+               "Esquivar": "1",
+               "Armas Pequeñas": "2",
+               "Armas Medianas": "1"
+           },
+           "MAGIA": {
+               "Espiritismo": "3",
+               "Ocultismo": "1",
+               "Hipnotismo": "3"
+           },
+           "PERCEPCIÓN": {
+               "Advertir-Notar": "3",
+               "Buscar-Investigar": "1",
+               "Reflejos": "3",
+               "Música-Baile": "4",
+               "Ballesta": "1"
+           },
+           "VOLUNTAD": {
+               "Religion": "3",
+               "Coraje": "1"
+           },
+           "CARISMA": {
+               "Don de Mando": "3",
+               "Don de Gente": "4",
+               "Recitar-Cantar": "3",
+               "Sex Appeal": "4",
+               "Disfraz": "4"
+           },
+           "EDUCACIÓN": {
+               "Escritura": "1",
+               "Idiomas": "2",
+               "Tecnología": "2",
+               "Sabiduría Popular": "3"
+           }
+    },
+    "Sicario": {
+        "FÍSICO": {
+            "Atletismo": "3",
+            "Fuerza Bruta": "1",
+            "Resistencia": "1",
+            "Intimidar": "2",
+            "Lucha": "2",
+            "Armas Pesadas": "1"
+        },
+        "ASTUCIA": {
+            "Sigilo": "3",
+            "Explosivos": "2"
+        },
+        "DESTREZA": {
+            "Arrojar": "3",
+            "Esquivar": "3",
+            "Armas Pequeñas": "2",
+            "Armas Medianas": "2"
+        },
+        "MAGIA": {
+            "Sexto Sentido": "1"
+        },
+        "PERCEPCIÓN": {
+            "Advertir-Notar": "3",
+            "Rastrear": "2",
+            "Reflejos": "2",
+            "En guardia": "1",
+            "Armas Precisión": "3"
+        },
+        "VOLUNTAD": {
+            "Religion": "1",
+            "Coraje": "1"
+        },
+        "CARISMA": {
+            "Disfraz": "2"
+        },
+        "EDUCACIÓN": {
+            "Sabiduría Popular": "1",
+            "Sanación": "1"
+        }
+    }
+}

@@ -1,0 +1,62 @@
+{
+    "Cultista": {
+       "FÍSICO": 0.09,
+       "ASTUCIA": 0.11,
+       "DESTREZA": 0.09,
+       "MAGIA": 0.18,
+       "PERCEPCIÓN": 0.09,
+       "VOLUNTAD": 0.16,
+       "CARISMA": 0.11,
+       "EDUCACIÓN": 0.18
+    },
+    "Milicia": {
+       "FÍSICO": 0.20,
+       "ASTUCIA": 0.11,
+       "DESTREZA": 0.13,
+       "MAGIA": 0.09,
+       "PERCEPCIÓN": 0.11,
+       "VOLUNTAD": 0.13,
+       "CARISMA": 0.13,
+       "EDUCACIÓN": 0.09
+    },
+    "Bribón": {
+       "FÍSICO": 0.11,
+       "ASTUCIA": 0.18,
+       "DESTREZA": 0.18,
+       "MAGIA": 0.09,
+       "PERCEPCIÓN": 0.18,
+       "VOLUNTAD": 0.09,
+       "CARISMA": 0.09,
+       "EDUCACIÓN": 0.09
+    },
+    "Técnico": {
+      "FÍSICO": 0.11,
+      "ASTUCIA": 0.18,
+      "DESTREZA": 0.13,
+      "MAGIA": 0.09,
+      "PERCEPCIÓN": 0.11,
+      "VOLUNTAD": 0.11,
+      "CARISMA": 0.10,
+      "EDUCACIÓN": 0.17
+    },
+    "Charlatán": {
+      "FÍSICO": 0.09,
+      "ASTUCIA": 0.17,
+      "DESTREZA": 0.14,
+      "MAGIA": 0.06,
+      "PERCEPCIÓN": 0.11,
+      "VOLUNTAD": 0.09,
+      "CARISMA": 0.20,
+      "EDUCACIÓN": 0.14
+   },
+   "Sicario": {
+      "FÍSICO": 0.18,
+      "ASTUCIA": 0.11,
+      "DESTREZA": 0.18,
+      "MAGIA": 0.09,
+      "PERCEPCIÓN": 0.18,
+      "VOLUNTAD": 0.09,
+      "CARISMA": 0.09,
+      "EDUCACIÓN": 0.09
+   }
+ }
