@@ -1,0 +1,81 @@
+{
+    "Supervivencia": {
+        "Morral cargado con pertrechos": [0.15, 3],
+        "Cuchillo con brújula y kit": [0.15, 0, "1d6+1"],
+        "Mapa de la ciudad": [0.2, 0],
+        "Mapa del baldío": [0.2, 0],
+        "Mapa de las cloacas": [0.1, 0]
+    },
+    "Armas Pesadas": {
+        "Escopeta recortada": [0.2, 2, "4d6/3d6/2d6", "10m"],
+        "Escopeta": [0.05, 3, "4d6/3d6/2d6", "20m"]
+    },
+    "Lucha": {
+        "Bastón picana": [0.01, 2, "1d6(3d6 stun)"],
+        "Macana": [0.2, 2, "1d6+1"],
+        "Navaja": [0.5, 0, "1d6+1"],
+        "Faca militar": [0.25, 0, "1d6+3"]
+    },
+    "Trampas y Puertas": {
+        "Ganzúas": [0.2, 1],
+        "Claymore": [0.01, 2, "5d6", "5m/r"],
+        "Alarma": [0.05, 0]
+    },
+    "Arrojar": {
+        "Suriken": [0.01, 1, "1d6", "10m"],
+        "Cuchillo arrojadizo": [0.05, 1, "1d6+1", "5m"],
+        "Granada militar": [0.01, 1, "5d6", "10m/r"]
+    },
+    "Armas Pequeñas": {
+        "Pistola 9mm": [0.5, 1, "2d6+1", "20m"],
+        "Pistola 45": [0.05, 1, "2d6+2", "25m"],
+        "Revólver 38": [0.15, 1, "2d6+3", "15m"],
+        "Revólver oculto": [0.2, 0, "2d6", "10m"],
+        "SMG": [0.05, 2, "2d6/3d6", "25/15mts"]
+    },
+    "Armas Medianas": {
+        "Rifle Semiauto.": [0.05, 4, "3d6+2", "80m"],
+        "Rifle Automático": [0.2, 4, "3d6/5d6", "50m"]
+    },
+    "Explosivos": {
+        "Granada militar": [0.02, 1, "5d6", "10m/r"],
+        "Claymore": [0.01, 2, "5d6", "5m/r"],
+        "Carga explosiva c4": [0.01, 2, "6d6", "15m/r"]
+    },
+    "Espiritismo": {
+        "Fetiche": [0.2, 0],
+        "Amuleto": [0.2, 0]
+    },
+    "Ocultistmo": {
+        "Fetiche": [0.2, 0],
+        "Amuleto": [0.2, 0]
+    },
+    "Buscar-Investigar": {
+        "Lupa": [0.05, 0]
+    },
+    "Armas Precisión": {
+        "Rifle Semiauto.": [0.1, 4, "3d6+2", "80m"],
+        "Rifle c/mira": [0.1, 4, "3d6+2", "280m"]
+    },
+    "Ballesta": {
+        "Ballesta": [0.1, 4, "2d6", "20m"],
+        "Ballestín de mano": [0.01, 2, "1d6", "10m"],
+        "Arco": [0.01, 4, "1d6+1", "20m"]
+    },
+    "Religión": {
+        "Cricifijo": [0.4, 0],
+        "Rosario": [0.2, 0]
+    },
+    "Disfraz": {
+        "Maquillaje": [0.1, 0]
+    },
+    "Criptografía": {
+        "Pad Militar": [0.1, 1]
+    },
+    "Tecnología": {
+        "Pad Militar": [0.2, 1]
+    },
+    "Sanación": {
+        "Kit Primeros Aux.": [0.1, 1]
+    }
+}

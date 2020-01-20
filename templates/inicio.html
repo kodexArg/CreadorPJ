@@ -1,5 +1,5 @@
 {% extends 'bootstrap/base.html' %}
-{% block title %}{{ data.clase }} ({{ data.poder }} pts){% endblock %}
+{% block title %}{{ data.clase }} {{ nombre }} ({{ data.poder }} pts){% endblock %}
 {% block content %}
    <div class="container p-1 my-1" id="conent">
          <form method="GET" class="form-inline">
@@ -36,7 +36,9 @@
    <div class="container" id="conent">
       <div class="card-columns">
          <div class="card border-secondary">
-            <img class="card-img-top" style="height:500px; width:350px" src="/static/img/{{ data['clase'] }}_{{ data['sexo'] }}_01.png" alt="{{ data['clase'] }}_{{ data['sexo'] }}_01.png">
+            <img class="card-img-top" style="height:500px; width:350px"
+                        src="/static/img/{{ data['clase'] }}_{{ data['sexo']}}_01.png"
+                        alt="{{ data['clase'] }}_{{ data['sexo'] }}_01.png">
             <div class="card-body">
                <table class="table table-sm">
                   {% for key, value in atributos.iterrows() %}
@@ -55,7 +57,8 @@
          <div class="card border-secondary">
             <div class="card-header">
                <p class="card-text">
-                  <h4>{{ data.clase }} ({{ data.poder }} pts)</h4>
+                  <h5>{{ nombre | safe }}</h5>
+                  {{ data.clase }}, poder {{ data.poder }} 
                </p>
             </div>
             <div class="card-body">
@@ -74,6 +77,35 @@
                   </tr>
                   {% endfor %}
                </table>
+            </div>
+            <div class="card-footer">
+               <small>
+                  Iniciativa: {{ iniciativa }} - Defensa: {{ defensa }}
+               </small>
+            </div>
+         </div>
+         <div class="card border-secondary">
+            <div>
+               <div class="card-body">
+                  <div class="card-text">
+                     <table class="table table-sm">
+                        <tr>
+                           <th>Inventario</th>
+                           <th style="text-align: center; font-size:10px">Estorbo</th>
+                           <th style="text-align: center; font-size:10px">Daño</th>
+                           <th style="text-align: center; font-size:10px">Rango</th>
+                        </tr>
+                        {% for i, v in inventario %}
+                        <tr>
+                           <td>{{ i }}</td>
+                           <td style="text-align: center; font-size:10px">{{ v[1] }}</td>
+                           <td style="text-align: center; font-size:10px">{{ v[2] }}</td>
+                           <td style="text-align: center; font-size:10px">{{ v[3] }}</td>
+                        </tr>                        
+                        {% endfor %}
+                     </table>
+                  </div>
+               </div>
             </div>
          </div>
       </div>
