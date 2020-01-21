@@ -6,32 +6,47 @@ from flask_bootstrap import Bootstrap
 import pandas as pd
 import numpy as np
 import json
+import os
+app = Flask(__name__)
+from sqlalchemy import create_engine
+
+Bootstrap(app)
+STATIC_ROOT = os.path.join(app.root_path, 'static') #necesario para pythonanywhere...creo.
 
 
-df_clases = pd.read_json('static/clases.json')
+#Iniciar Clases, comodidad, sorry
+df_clases = pd.read_json(os.path.join(STATIC_ROOT, 'clases.json'))
 CLASES = (list(df_clases.columns.values))
 ATRIBUTOS = (list(df_clases.index.values))
-
-app = Flask(__name__)
-Bootstrap(app)
+#////////////////////////comienzan routes:
 
 
 @app.route('/')
 def main():
     data = request.args
     if request.method == 'GET' and request.args.get('poder', False):
+        caracter = pd.DataFrame(data=request.args.to_dict(), index=['caracter'])
         atributos = randomizar_atributos(data)
         habilidades = randomizar_habilidades(data, atributos)
         nombre = randomizar_nombre(data)
         iniciativa = roll_iniciativa(atributos, habilidades)
         defensa = roll_defensa(atributos, habilidades)
+        dinero = randomizar_dinero(data)
         inventario = randomizar_inventario(data, habilidades)
+
+        guardar(caracter, atributos, habilidades, nombre, iniciativa, defensa, dinero, inventario)
 
         return render_template('inicio.html', opciones=CLASES, data=data,
             atributos=atributos, habilidades=habilidades, nombre=nombre,
-            iniciativa=iniciativa, defensa=defensa, inventario=inventario)
+            iniciativa=iniciativa, defensa=defensa, inventario=inventario,
+            dinero=dinero)
     else:
         return render_template('inicio.html', opciones=CLASES, data=data)
+
+
+def guardar(caracter, atributos, habilidades, nombre, iniciativa, defensa, dinero, inventario):
+    disk_engine = create_engine('sqlite:///cpj.db')
+    # caracter.to_sql(name='caracter', con=disk_engine, if_exists='append')
 
 
 def roll_objetivo(objetivo):
@@ -59,12 +74,14 @@ def roll_iniciativa(a, h):
         if i == "Reflejos":
             reflejo = row['VALOR']
             iniciativa = reflejo
-
-    return str(iniciativa) + ' + 1o3d10'
+    
+    roll = roll_objetivo(1)
+    cadena = str(iniciativa) + ' + 1o3d10' + ' ( ' + str(iniciativa) +'+'+str(roll)+'='+str(iniciativa+roll)+' )'
+    return cadena
 
 
 def randomizar_inventario(data, habilidades):
-    inventario = pd.read_json('static/inventario.json')
+    inventario = pd.read_json(os.path.join(STATIC_ROOT, 'inventario.json'))
     hab_pj = habilidades.index.tolist()
     selection = []
 
@@ -76,6 +93,12 @@ def randomizar_inventario(data, habilidades):
                     selection.append([item, atr])
 
     return selection
+
+
+def randomizar_dinero(data):
+    cash =np.random.randint(0, np.int(data['poder'])) * 10
+    return cash
+
 
 def randomizar_atributos(data):
     c = data['clase']
@@ -91,7 +114,7 @@ def randomizar_habilidades(data, atributos):
     c = data['clase']
     hlist = []
 
-    with open('static/skills.json', 'r') as json_file:
+    with open(os.path.join(STATIC_ROOT, 'skills.json'), 'r') as json_file:
         d = json.load(json_file)
 
     for atribs, habils in d[c].items():
@@ -110,18 +133,18 @@ def randomizar_habilidades(data, atributos):
 
 def randomizar_nombre(data):
     if data['sexo'] == 'Mujer':
-        nombres = pd.read_csv('static/spanish-names/mujeres.csv')
+        nombres = pd.read_csv(os.path.join(STATIC_ROOT, 'spanish-names/mujeres.csv'))
     else:
-        nombres = pd.read_csv('static/spanish-names/hombres.csv')
+        nombres = pd.read_csv(os.path.join(STATIC_ROOT, 'spanish-names/hombres.csv'))
 
-    apellidos = pd.read_csv('static/spanish-names/apellidos.csv')
+    apellidos = pd.read_csv(os.path.join(STATIC_ROOT, 'spanish-names/apellidos.csv'))
     
     todrop = nombres[nombres['edad_media'] > int(data['poder'])].index
     nombres.drop(todrop, inplace=True)
     nombres_max = np.max(nombres[['frec']])
 
     pruebas = 0
-    while pruebas < 200:
+    while pruebas True:
         pruebas += 1
         test = nombres.sample(n=1)
         chances_aceptar = np.float(test['frec'].values[0]/nombres_max)
@@ -134,7 +157,7 @@ def randomizar_nombre(data):
     edad = str(int(e))
 
     pruebas = 0
-    while pruebas < 200:
+    while pruebas < 2000:
         pruebas += 1
         test = apellidos.sample(n=1)
         chances_aceptar = np.float(test['frec_pri'].values[0]/nombres_max)
@@ -142,7 +165,7 @@ def randomizar_nombre(data):
             break
     apellido = test['apellido'].values[0]
 
-    return nombre+'<br><small>'+apellido+' '+edad+' años</small>'
+    return [nombre, apellido, edad]
 
 
 if __name__ == '__main__':

@@ -27,7 +27,7 @@
         "Granada militar": [0.01, 1, "5d6", "10m/r"]
     },
     "Armas Pequeñas": {
-        "Pistola 9mm": [0.5, 1, "2d6+1", "20m"],
+        "Pistola 9mm": [0.75, 1, "2d6+1", "20m"],
         "Pistola 45": [0.05, 1, "2d6+2", "25m"],
         "Revólver 38": [0.15, 1, "2d6+3", "15m"],
         "Revólver oculto": [0.2, 0, "2d6", "10m"],
