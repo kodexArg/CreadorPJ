@@ -1,4 +1,5 @@
 {% extends 'bootstrap/base.html' %}
+
 {% block title %}
    {% if data['poder'] %}
       {{ data.clase }} {{ nombre[0] }} ({{ data.poder }} pts)
@@ -6,21 +7,22 @@
       Creador de Personajes
    {% endif %}
 {% endblock %}
+
 {% block content %}
-   <div class="container p-1 my-1" id="conent">
+   <div class="container p-2 my-1" id="conent">
          <form method="GET" class="form-inline">
             <div class="form-group">
-                  <div class="input-group  col-sm"">
+                  <div class="input-group col-sm">
                      <select name="clase" class="custom-select">
                         {% for o in opciones %}
-                           <option value="{{ o }}" {% if data['clase']==o %}SELECTED{% endif %}>{{ o }}</option>
+                           <option value="{{ o }}" {% if data.clase==o %}SELECTED{% endif %}>{{ o }}</option>
                         {% endfor %}
                      </select>
                   </div>
-               <div class="input-group  col-sm"">
+               <div class="input-group col-sm">
                      <select name="sexo" class="custom-select">
-                        <option value="Mujer" {% if data['sexo']=='Mujer' %}SELECTED{% endif %}>Mujer</option>
-                        <option value="Hombre" {% if data['sexo']=='Hombre' %}SELECTED{% endif %}>Hombre</option>
+                        <option value="Mujer" {% if data.sexo =='Mujer' %}SELECTED{% endif %}>Mujer</option>
+                        <option value="Hombre" {% if data.sexo =='Hombre' %}SELECTED{% endif %}>Hombre</option>
                      </select>
                </div>
                <label class="control-label" for="poder">Poder:</label>
@@ -28,11 +30,10 @@
                   <input class="form-control" name="poder" type="number" value="{{ request.args.get('poder', 40) | safe }}">
                </div>
                {% if data['poder'] %}
-                  <button class="btn btn-primary  col-sm"" type="submit">Regenerar</button>
-                  <a class="btn btn-secondary col-sm" href="/">Borrar</a>
-                  <a class="btn btn-secondary col-sm" href="/save">Guardar</a>
+                  <button class="btn btn-primary col-sm" type="submit">Regenerar</button>
+                  <a class="btn btn-secondary col-sm" href="/?save=True">Guardar</a>
                {% else %}
-                  <button class="btn btn-primary  col-sm"" type="submit">Generar</button>
+                  <button class="btn btn-primary col-sm" type="submit">Generar</button>
                {% endif %}
             </div>
          </form>
@@ -44,27 +45,84 @@
          <!-- Nombre del Personaje-->
          <div class="card border-secondary">
             <div class="card-header">
+               <h3>{{ nombre['nombre'] }}</h3>
+            </div>
+         </div>
+
+         <div class="card border-secondary">
+            <img class="card-img-top" src="/static/img/{{ data['clase'] }}_{{ data['sexo']}}_01.png" alt="sin imágen">
+
+            <div class="card-body">
                <p class="card-title">
-                  <h5>{{ nombre[0] }}</h5>
+                  {{ nombre['nombre'] }} {{ nombre['apellido'] }}, {{ data.clase }}, {{ nombre['edad'] }} años
+               </p>
+               <small class="text-muted">
+                  {% if caracteristicas %}
                   <p class="card-text">
-                     {{ nombre[1] }}, {{ data.clase }}, {{ nombre[2] }} años
+                        {% for i, car in caracteristicas.items() %}
+                           {{ car }}{% if not loop.last %},{% endif %}
+                        {% endfor %}
                   </p>
+                  {% endif %}
+               </small>
+            </div>
+         </div>
+
+         <div class="card border-secondary">
+            <div class="card-header p-2">
+               <p class="card-title text-center mb-0 p-0">
+                  <b>Atributos</b>
                </p>
             </div>
-            <img class="card-img-top" src="/static/img/{{ data['clase'] }}_{{ data['sexo']}}_01.png" alt="sin imágen">
             <div class="card-body">
                <table class="table table-sm">
-                  {% for key, value in atributos.iterrows() %}
+                  {% for key, value in atributos.items() %}
                   <tr">
                      <td>
                         {{ key }}
                      </td>
                      <td style="text-align: right;">
-                        {{ value[data.clase] }}
+                        {{ value }}
                      </td>
                   </tr>
                   {% endfor %}
                </table>
+            </div>
+         </div>
+
+         <!-- Inventario -->
+         <div class="card border-secondary">
+            <div>
+               <div class="card-header p-2">
+                  <p class="card-title text-center mb-0 p-0">
+                     <b>Inventario</b>
+                  </p>
+               </div>
+               <div class="card-body">
+                  <p class="card-text">
+                     Dinero: {{ dinero['dinero'] }} pesos
+                  </p>
+                  {% if inventario %}
+                  <div class="table-responsive">
+                     <table class="table table-sm">
+                        <tr>
+                           <th style="border-top: 0px;"></th>
+                           <th style="border-top: 0px;text-align: center; font-size:12px">Estorbo</th>
+                           <th style="border-top: 0px;text-align: center; font-size:12px">Daño</th>
+                           <th style="border-top: 0px;text-align: center; font-size:12px">Rango</th>
+                        </tr>
+                        {% for i, v in inventario.items() %}
+                        <tr>
+                           <td>{{ i }}</td>
+                           <td class="align-middle" style="text-align: center; font-size: 12px;">{{ v[0] }}</td>
+                           <td class="align-middle" style="text-align: center; font-size: 12px;">{{ v[1] }}</td>
+                           <td class="align-middle" style="text-align: center; font-size: 12px;">{{ v[2] }}</td>
+                        </tr>                        
+                        {% endfor %}
+                     </table>
+                  </div>
+                  {% endif %}
+               </div>
             </div>
          </div>
 
@@ -77,13 +135,13 @@
             </div>
             <div class="card-body">
                <table class="table table-sm">
-                  {% for key, value in habilidades.iterrows() %}
+                  {% for key, value in habilidades.items() %}
                   <tr style="color:{% if loop.index <= 3 %}#000000{% elif loop.index <= 6 %}#6e6e6e{% else %}#bdbdbd{% endif %}">
                      <td>
                         {{ key }}
                      </td>
                      <td style="text-align: right;">
-                        {{ value['VALOR'] }}
+                        {{ value }}
                      </td>
                   </tr>
                   {% endfor %}
@@ -91,39 +149,8 @@
             </div>
             <div class="card-footer text-center">
                <small class="text-muted">
-                  Iniciativa: {{ iniciativa }} - Defensa: {{ defensa }}
+                  <b>Iniciativa:</b> {{ iniciativa }} - <b>Defensa:</b> {{ defensa }}
                </small>
-            </div>
-         </div>
-         <!-- Inventario -->
-         <div class="card border-secondary">
-            <div>
-               <div class="card-header p-2">
-                  <p class="card-title text-center mb-0 p-0">
-                     <b>Inventario</b>
-                  </p>
-               </div>
-               <div class="card-body">
-                  <p class="card-text">
-                     Dinero: {{ dinero }} pesos
-                  </p>
-                  <table class="table table-sm">
-                     <tr>
-                        <th></th>
-                        <th style="text-align: center; font-size:10px">Estorbo</th>
-                        <th style="text-align: center; font-size:10px">Daño</th>
-                        <th style="text-align: center; font-size:10px">Rango</th>
-                     </tr>
-                     {% for i, v in inventario %}
-                     <tr>
-                        <td>{{ i }}</td>
-                        <td style="text-align: center; font-size:10px">{{ v[1] }}</td>
-                        <td style="text-align: center; font-size:10px">{{ v[2] }}</td>
-                        <td style="text-align: center; font-size:10px">{{ v[3] }}</td>
-                     </tr>                        
-                     {% endfor %}
-                  </table>
-               </div>
             </div>
          </div>
       </div>

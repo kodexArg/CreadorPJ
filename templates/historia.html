@@ -1,0 +1,123 @@
+{% extends 'bootstrap/base.html' %}
+
+
+
+
+{% block content %}
+
+<style>
+    p {
+        margin: 5pt;
+    }
+
+    .card {
+        margin: 10pt;
+    }
+    
+    .card-columns {
+        -webkit-column-count: 1;
+        -moz-column-count: 1;
+        column-count: 1;
+    }
+
+    .card-boddy {
+        padding: 10pt;
+    }
+
+    .row {
+        padding: 10pt;
+    }
+</style>
+
+<div class="container p-1 my-1" id="conent">
+    <form method="GET" class="form-inline">
+        <div class="form-group">
+            <div class="input-group col-sm">
+                <select name="historia" class="custom-select">
+                    {% for opcion in json_historia %}
+                    <option value="{{ opcion }}" name="{{ opcion }}" id="{{ opcion }}"
+                        {% if request.args.get("historia")==opcion %}SELECTED{% endif %}>{{ opcion }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <button class="btn btn-primary col-sm" type="submit">ver historia</button>
+        </div>
+    </form>
+</div>
+
+{% if request.args.get("historia") %}
+
+
+<div class="container" p-1 my-1>
+    <div class="card-columns">
+        <div class="card">
+            <div class="card-header">
+                <h4>Localización</h4>
+            </div>
+            <div class="card-boddy">
+                <div class="col-sm">
+                    {% for p in historia.get("Localización") %}
+                    <p>
+                        <div class="col-sm text-justify">
+                            {{ p | safe }}
+                        </div>
+                    </p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <h4>Personajes</h4>
+            </div>
+            <div class="card-boddy">
+                <div class="col-sm">
+                    {% for npj, story in historia["Personajes"].items() %}
+                    <div class="row border-primary">
+                        <div class="col-sm-3">
+                            <b>{{ npj }}</b>
+                        </div>
+                        <div class="col-sm-6">
+                            {% for p in story %}
+                            <p>{{ p | safe }}</p>
+                            {% endfor %}
+                            {% for dnpj, dialogo in historia["Diálogos"].items() %}
+                                {% if npj==dnpj %}
+                                    {% for linea in dialogo %}
+                                        <p class="text-muted" style="margin: 2pt;">&mdash;{{linea}}</p>	
+                                    {% endfor %}
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <h4>Encuentros</h4>
+            </div>
+            <div class="card-boddy">
+                <div class="col-sm">
+                    {% for encuentro, story in historia["Encuentros"].items() %}
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <b>{{ encuentro }}</b>
+                        </div>
+                        <div class="col-sm-6">
+                            {% for p in story %}
+                            <p>{{ p | safe }}</p>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+
+{% endblock %}
