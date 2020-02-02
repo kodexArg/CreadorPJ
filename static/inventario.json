@@ -2,12 +2,12 @@
     "Supervivencia": {
         "Morral cargado con pertrechos": [0.15, 3],
         "Cuchillo con brújula y kit": [0.15, 0, "1d6+1"],
-        "Mapa de la ciudad": [0.2, 0],
-        "Mapa del baldío": [0.2, 0],
-        "Mapa de las cloacas": [0.1, 0]
+        "Mapa de la ciudad": [0.4, 0],
+        "Mapa del baldío": [0.3, 0],
+        "Mapa de las cloacas": [0.2, 0]
     },
     "Armas Pesadas": {
-        "Escopeta recortada": [0.2, 2, "4d6/3d6/2d6", "10m"],
+        "Escopeta Recortada": [0.2, 2, "4d6/3d6/2d6", "10m"],
         "Escopeta": [0.05, 3, "4d6/3d6/2d6", "20m"]
     },
     "Lucha": {
@@ -44,11 +44,15 @@
     },
     "Espiritismo": {
         "Fetiche": [0.2, 0],
-        "Amuleto": [0.2, 0]
+        "Crucifijo Invertido": [0.1, 0],
+        "Amuleto": [0.2, 0],
+        "Muñeco Vudú": [0.05, 1]
     },
     "Ocultistmo": {
         "Fetiche": [0.2, 0],
-        "Amuleto": [0.2, 0]
+        "Amuleto": [0.2, 0],
+        "Crucifijo Invertido": [0.1, 0],
+        "Gema extraña": [0.1, 0]
     },
     "Buscar-Investigar": {
         "Lupa": [0.05, 0]
@@ -64,7 +68,9 @@
     },
     "Religión": {
         "Cricifijo": [0.4, 0],
-        "Rosario": [0.2, 0]
+        "Rosario": [0.2, 0],
+        "Biblia de bolsillo": [0.4, 0],
+        "Alzacuellos": [0.05, 0]
     },
     "Disfraz": {
         "Maquillaje": [0.1, 0]

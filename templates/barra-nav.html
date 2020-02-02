@@ -1,0 +1,26 @@
+{% block navbar %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-secondary fixed-top">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand" href="#">RyF</a>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+
+      <li class="nav-item py-0"><a href="/?sel=Generar" class="nav-link">Generar</a></li>
+      <li class="nav-item py-0"><a href="/?sel=Cargar" class="nav-link">Cargar</a></li>
+      <li class="nav-item py-0"><a href="/?sel=Guardar" class="nav-link">Guardar</a></li>
+      <li class="nav-item py-0"><a href="/mapa" class="nav-link">Mapa</a></li>
+    </ul>
+    {% if request.args.get('sel') == 'Generar' %}
+    {% include 'form_regenerar.html' %}
+  {% elif request.args.get('sel') == 'Guardar' %}
+    {% include 'form_guardar.html' %}
+  {% else %}
+    {% include 'form_seleccionar.html' %}
+  {% endif %}
+  </div>
+
+</nav>
+{% endblock %}

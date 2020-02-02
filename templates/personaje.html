@@ -1,0 +1,123 @@
+<div class="container" id="conent">
+    <div class="card-columns">
+       <!-- Nombre del Personaje-->
+       <div class="card border-secondary">
+          <div class="card-header text-center">
+             <h3>
+               {% if pj['nombre']['nombre'].split(' ')[0] is in ['MARÍA', 'ANA', 'JOSÉ', 'JUAN', 'JOAN'] %}
+                  {{ pj['nombre']['nombre'] }}
+               {% else %}
+                  {{ pj['nombre']['nombre'].split(' ')[0] }}
+               {% endif %}
+               {{ pj['nombre']['apellido'].split(' ')[0] }}
+             </h3>
+          </div>
+       </div>
+ 
+       <div class="card border-secondary">
+          <img class="card-img-top" src="/static/img/{{ pj['data']['clase'] }}_{{ pj['data']['sexo']}}_01.png" alt="sin imágen">
+ 
+          <div class="card-body">
+             <p class="card-title">
+                {{ pj['nombre']['nombre'] }} {{ pj['nombre']['apellido'] }}, {{ pj['data'].clase }}, {{ pj['nombre']['edad'] }} años
+             </p>
+             <small class="text-muted">
+                {% if pj['caracteristicas'] %}
+                <p class="card-text">
+                   {% for i, car in pj['caracteristicas'].items() %}
+                   {{ car }}{% if not loop.last %},{% endif %}
+                   {% endfor %}
+                </p>
+                {% endif %}
+             </small>
+          </div>
+       </div>
+ 
+       <div class="card border-secondary">
+          <div class="card-header p-2">
+             <p class="card-title text-center mb-0 p-0">
+                <b>Atributos</b>
+             </p>
+          </div>
+          <div class="card-body">
+             <table class="table table-sm">
+                {% for key, value in pj['atributos'].items() %}
+                <tr">
+                   <td>
+                      {{ key }}
+                   </td>
+                   <td style="text-align: right;">
+                      {{ value }}
+                   </td>
+                   </tr>
+                   {% endfor %}
+             </table>
+          </div>
+       </div>
+ 
+       <!-- Inventario -->
+       <div class="card border-secondary">
+          <div>
+             <div class="card-header p-2">
+                <p class="card-title text-center mb-0 p-0">
+                   <b>Inventario</b>
+                </p>
+             </div>
+             <div class="card-body">
+                <p class="card-text">
+                   Dinero: {{ pj['dinero']['dinero'] }} pesos
+                </p>
+                {% if pj['inventario'] %}
+                <div class="table-responsive">
+                   <table class="table table-sm">
+                      <tr>
+                         <th style="border-top: 0px;"></th>
+                         <th style="border-top: 0px;text-align: center; font-size:12px">Estorbo</th>
+                         <th style="border-top: 0px;text-align: center; font-size:12px">Daño</th>
+                         <th style="border-top: 0px;text-align: center; font-size:12px">Rango</th>
+                      </tr>
+                      {% for i, v in pj['inventario'].items() %}
+                      <tr>
+                         <td class="align-middle" style="text-align: left; font-size: 14px;"">{{ i }}</td>
+                         <td class="align-middle" style="text-align: center; font-size: 12px;">{{ v[1] }}</td>
+                         <td class="align-middle" style="text-align: center; font-size: 12px;">{{ v[2] }}</td>
+                         <td class="align-middle" style="text-align: center; font-size: 12px;">{{ v[3] }}</td>
+                      </tr>
+                      {% endfor %}
+                   </table>
+                </div>
+                {% endif %}
+             </div>
+          </div>
+       </div>
+ 
+       <!-- Habilidades -->
+       <div class="card border-secondary">
+          <div class="card-header p-2">
+             <p class="card-title text-center mb-0 p-0">
+                <b>Habilidades</b>
+             </p>
+          </div>
+          <div class="card-body">
+             <table class="table table-sm">
+                {% for key, value in pj['habilidades'].items() %}
+                <tr
+                   style="color:{% if loop.index <= 3 %}#000000{% elif loop.index <= 6 %}#6e6e6e{% else %}#bdbdbd{% endif %}">
+                   <td>
+                      {{ key }}
+                   </td>
+                   <td style="text-align: right;">
+                      {{ value }}
+                   </td>
+                </tr>
+                {% endfor %}
+             </table>
+          </div>
+          <div class="card-footer text-center">
+             <small class="text-muted">
+                <b>Iniciativa:</b> {{ pj['iniciativa'] }} - <b>Defensa:</b> {{ pj['defensa'] }}
+             </small>
+          </div>
+       </div>
+    </div>
+ </div>

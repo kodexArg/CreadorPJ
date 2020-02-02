@@ -1,0 +1,24 @@
+{% extends "bootstrap/base.html" %}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+{% block title %}
+    Creador de Personajes
+{% endblock %}
+
+{% block styles %}
+    {{ super() }}
+    <link href="/static/base.css" rel="stylesheet">
+
+{% endblock %}
+
+{% block navbar %}
+    {% include 'barra-nav.html' %}
+{% endblock  %}
+
+{% block content %}
+    {% if mapa %}
+        {% include 'mapa.html' %}
+    {% else %}
+        {% include 'personaje.html' %}
+    {% endif %}
+{% endblock %}
