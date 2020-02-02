@@ -1,13 +1,13 @@
 <form method="GET" class="form-inline" action="/cargado">
    <div class="form-group">
-      <div class="input-group col-sm input-group-sm">
+      <div class="input-group col-sm input-group-sm mg-auto p-1">
          <select name="nombre_archivo" class="form-control input-sm">
             {% for o in opciones_pjs %}
             <option value="{{ o }}">{{ o[:-7] }}</option>
             {% endfor %}
          </select>
       </div>
-      <div class="col-sm mg-auto">
+      <div class="col-sm  mg-auto p-1">
          <input type="hidden" name="sel" value="Cargar">
          <button class="btn btn-warning btn-sm btn-block" type="submit">Cargar</button>
       </div>

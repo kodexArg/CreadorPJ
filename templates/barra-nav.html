@@ -1,21 +1,29 @@
 {% block navbar %}
-<nav class="navbar navbar-expand-lg navbar-dark bg-secondary fixed-top">
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+<nav class="navbar navbar-expand-sm navbar-dark bg-secondary fixed-top">
+  <button class="navbar-toggler p-0 m-0" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <a class="navbar-brand" href="#">RyF</a>
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
+  <a class="navbar-brand" href="/"><span class="font:italic">Subordinación y Valor</span></a>
 
-      <li class="nav-item py-0"><a href="/?sel=Generar" class="nav-link">Generar</a></li>
-      <li class="nav-item py-0"><a href="/?sel=Cargar" class="nav-link">Cargar</a></li>
-      <li class="nav-item py-0"><a href="/?sel=Guardar" class="nav-link">Guardar</a></li>
-      <li class="nav-item py-0"><a href="/mapa" class="nav-link">Mapa</a></li>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="nav">
+      <li class="nav-item dropdown bg-secondary">
+        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+          aria-expanded="false">
+          PNJs
+        </a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="/?sel=Generar">Generar</a>
+          <a class="dropdown-item" href="/?sel=Cargar">Cargar</a>
+          <a class="dropdown-item" href="/?sel=Guardar">Guardar</a>
+        </div>
+      </li>
+      <li class="nav-item bg-secondary"><a href="/mapa" class="nav-link">Mapa</a></li>
     </ul>
   </div>
 </nav>
-<div class="container-flex p-3">
+<div class="container-flex p-4">
   <div class="row">
     <div class="mx-auto">
       {% if request.args.get('sel') == 'Generar' %}
