@@ -13,14 +13,21 @@
       <li class="nav-item py-0"><a href="/?sel=Guardar" class="nav-link">Guardar</a></li>
       <li class="nav-item py-0"><a href="/mapa" class="nav-link">Mapa</a></li>
     </ul>
-    {% if request.args.get('sel') == 'Generar' %}
-    {% include 'form_regenerar.html' %}
-  {% elif request.args.get('sel') == 'Guardar' %}
-    {% include 'form_guardar.html' %}
-  {% else %}
-    {% include 'form_seleccionar.html' %}
-  {% endif %}
   </div>
-
 </nav>
+<div class="container-flex p-3">
+  <div class="row">
+    <div class="mx-auto">
+      {% if request.args.get('sel') == 'Generar' %}
+      {% include 'form_regenerar.html' %}
+      {% elif request.args.get('sel') == 'Guardar' %}
+      {% include 'form_guardar.html' %}
+      {% elif request.args.get('sel') == 'Cargar' %}
+
+      {% include 'form_seleccionar.html' %}
+      {% else %}
+      {% endif %}
+    </div>
+  </div>
+</div>
 {% endblock %}

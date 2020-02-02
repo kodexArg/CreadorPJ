@@ -1,9 +1,12 @@
 <form method="GET" class="form-inline" action="/guardado">
-    <div class="form-group">
-       <div class="input-group col-sm input-group-sm">
-            <input class="form-control input-sm" name="nombre" value="{{ pj['nombre']['nombre'] }} {{ pj['nombre']['apellido'] }}">
-       </div>
-       <button class="btn btn-warning btn-sm" type="submit">Guardar</button>
-       <input type="hidden" name="sel" value="Guardar">
-    </div>
- </form>
+   <div class="form-group">
+      <div class="input-group col-sm input-group-sm mg-auto">
+         <input class="form-control input-sm" name="nombre"
+            value="{{ pj['nombre']['nombre'] }} {{ pj['nombre']['apellido'] }}">
+      </div>
+      <div class="col-sm mg-auto">
+         <button class="btn btn-warning btn-sm btn-block" type="submit">Guardar</button>
+         <input type="hidden" name="sel" value="Guardar">
+      </div>
+   </div>
+</form>

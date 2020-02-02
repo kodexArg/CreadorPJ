@@ -1,24 +1,26 @@
 <form method="GET" class="form-inline" action="/generar">
    <div class="form-group">
       <div class="input-group col-sm input-group-sm">
-         <select name="clase" class="form-control input-sm">
+         <select name="clase" class="form-control input-sm mg-aut">
             {% for o in opciones_clases %}
             <option value="{{ o }}" {% if request.args.get('clase') == o %}SELECTED{% endif %}>{{ o }}</option>
             {% endfor %}
          </select>
       </div>
-      <div class="input-group col-sm-3 input-group-sm">
+      <div class="input-group col-sm-3 input-group-sm mg-auto">
          <select name="sexo" class="form-control input-sm">
             <option value="Mujer" {% if request.args.get('sexo') == 'Mujer' %}SELECTED{% endif %}>Mujer</option>
             <option value="Hombre" {% if request.args.get('sexo') == 'Hombre' %}SELECTED{% endif %}>Hombre</option>
          </select>
       </div>
-      <label class="control-label" for="poder"><small>Poder:</small></label>
-      <div class="input-group col-sm-2 input-group-sm">
+      <div class="input-group col-sm-2 input-group-sm mg-aut">
+         <label class="control-label" for="poder"><small>Poder:</small></label>
          <input class="form-control input-sm" name="poder" type="number"
             value="{{ request.args.get('poder', 40) | safe }}">
       </div>
-      <input type="hidden" name="sel" value="Generar">
-      <button class="btn btn-warning btn-sm" type="submit">Generar</button>
+      <div class="col-sm-3 mg-auto" align="center">
+         <input type="hidden" name="sel" value="Generar">
+         <button class="btn btn-warning btn-sm btn-block" type="submit">Generar</button>
+      </div>
    </div>
 </form>
