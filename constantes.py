@@ -12,5 +12,5 @@ df_clases = pd.read_json(os.path.join(STATIC_ROOT, 'clases.json'))
 CLASES = (list(df_clases.columns.values))
 ATRIBUTOS = (list(df_clases.index.values))
 INTENTOS = 500
-POSIBILIDAD_TRAIT = 6
+POSIBILIDAD_TRAIT = 3
 POSIBILIDAD_INVENTARIO = 1.5

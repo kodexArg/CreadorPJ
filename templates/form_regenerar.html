@@ -1,26 +1,71 @@
+{% block javascript %}
+<script type="text/javascript">
+
+   document.onload = mostrar();
+
+   function mostrar() {
+      if (document.getElementById("masopciones").checked) {
+         var v = "block";
+      } else {
+         var v = "none"
+      }
+      document.getElementById("opcional").style.display = v;
+
+   };
+
+</script>
+{% endblock %}
+
 <form method="GET" class="form-inline" action="/generar">
    <div class="form-group">
-      <div class="input-group col-sm input-group-sm mg-auto p-1">
-         <select name="clase" class="form-control input-sm">
-            {% for o in opciones_clases %}
-            <option value="{{ o }}" {% if request.args.get('clase') == o %}SELECTED{% endif %}>{{ o }}</option>
-            {% endfor %}
-         </select>
+      <div class="container" id="opcional" style="display: none">
+         <div class="row">
+            <div class="input-group col-sm input-group-sm mg-auto p-2">
+               <label class="control-label" for="opt_nombre"><small> Nombre:</small></label>
+               <input class="form-control input-sm col-sm-2" name="opt_nombre">
+               <label class="control-label" for="opt_apellido"><small> Apellido:</small></label>
+               <input class="form-control input-sm col-sm-2" name="opt_apellido">
+               <label class="control-label" for="opt_edad"><small> Edad:</small></label>
+               <input class="form-control input-sm col-sm-2" name="opt_edad">
+               <label class="control-label" for="opt_trait"><small> Traits:</small></label>
+               <input class="form-control input-sm col-sm-3" name="opt_trait">
+            </div>
+         </div>
       </div>
-      <div class="input-group col-sm-3 input-group-sm mg-auto p-1">
-         <select name="sexo" class="form-control input-sm">
-            <option value="Mujer" {% if request.args.get('sexo') == 'Mujer' %}SELECTED{% endif %}>Mujer</option>
-            <option value="Hombre" {% if request.args.get('sexo') == 'Hombre' %}SELECTED{% endif %}>Hombre</option>
-         </select>
-      </div>
-      <div class="input-group col-sm-2 input-group-sm mg-auto p-1">
-         <label class="control-label" for="poder"><small>Poder:</small></label>
-         <input class="form-control input-sm" name="poder" type="number"
-            value="{{ request.args.get('poder', 40) | safe }}">
-      </div>
-      <div class="col-sm-3 mg-auto p-1" align="center">
-         <input type="hidden" name="sel" value="Generar">
-         <button class="btn btn-warning btn-sm btn-block" type="submit">Generar</button>
+      <div class="container">
+         <div class="row">
+            <div class="input-group col-sm input-group-sm mg-auto p-1"><select name="clase"
+                  class="form-control input-sm">
+                  {% for o in opciones_clases %}
+                  <option value="{{ o }}" {% if request.args.get('clase') == o %}SELECTED{% endif %}>{{ o }}</option>
+                  {% endfor %}
+               </select>
+            </div>
+            <div class="input-group col-sm-3 input-group-sm mg-auto p-1">
+               <select name="sexo" class="form-control input-sm">
+                  <option value="Mujer" {% if request.args.get('sexo') == 'Mujer' %}SELECTED{% endif %}>Mujer</option>
+                  <option value="Hombre" {% if request.args.get('sexo') == 'Hombre' %}SELECTED{% endif %}>Hombre
+                  </option>
+               </select>
+            </div>
+            <div class="input-group col-sm-2 input-group-sm mg-auto p-1">
+               <label class="control-label" for="poder"><small>Poder:</small></label>
+               <input class="form-control input-sm" name="poder" type="number"
+                  value="{{ request.args.get('poder', 40) | safe }}">
+            </div>
+            <div class="col-sm-3 mg-auto p-1" align="center">
+               <input type="hidden" name="sel" value="Generar">
+               <button class="btn btn-warning btn-sm btn-block" type="submit">Generar</button>
+            </div>
+                        <div class="input-group col-sm input-group-sm mg-auto p-1">
+               <div class="btn-group-toggle" data-toggle="buttons">
+                  <label class="btn btn-light btn-sm" onclick="mostrar()">
+                     <input type="checkbox" class="btn btn-sm active" id="masopciones">
+                     +opciones
+                  </label>
+               </div>
+            </div>
+         </div>
       </div>
    </div>
 </form>

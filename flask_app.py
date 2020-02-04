@@ -21,7 +21,6 @@ def home():
     opciones_clases = ct.CLASES
     opciones_pjs = listar_guardados()
     pj = cargar_personaje()
-    print(pj)
     return render_template('home.html', **locals())
 
 
@@ -67,7 +66,7 @@ def historia():
     if request.args.get('historia'):
         historia = json_historia[request.args.get('historia')]
         for k, v in historia['Personajes'].items():
-            print(k, v )
+            pass
     else:
         historia=[]
 
@@ -84,6 +83,7 @@ def generar_personaje(data):
     nombre = rnd.randomizar_nombre(caracter)
     iniciativa = rolls.roll_iniciativa(atributos, habilidades)
     defensa = rolls.roll_defensa(atributos, habilidades)
+    rasgos = rnd.randomizar_rasgos(caracter, atributos, habilidades)
     return locals()
 
 

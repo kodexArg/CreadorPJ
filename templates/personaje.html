@@ -21,15 +21,6 @@
              <p class="card-title">
                 {{ pj['nombre']['nombre'] }} {{ pj['nombre']['apellido'] }}, {{ pj['data'].clase }}, {{ pj['nombre']['edad'] }} años
              </p>
-             <small class="text-muted">
-                {% if pj['caracteristicas'] %}
-                <p class="card-text">
-                   {% for i, car in pj['caracteristicas'].items() %}
-                   {{ car }}{% if not loop.last %},{% endif %}
-                   {% endfor %}
-                </p>
-                {% endif %}
-             </small>
           </div>
        </div>
  
@@ -55,6 +46,73 @@
           </div>
        </div>
  
+
+       <!-- Habilidades -->
+       <div class="card border-secondary">
+         <div class="card-header p-2">
+            <p class="card-title text-center mb-0 p-0">
+               <b>Rasgos</b>
+            </p>
+         </div>
+         <div class="card-body">
+            <span class="text-muted">
+               {% if pj['caracteristicas'] %}
+               <p class="card-text">
+                  {% for i, car in pj['caracteristicas'].items() %}
+                  {{ car }}{% if not loop.last %},{% endif %}
+                  {% endfor %}
+               </p>
+               {% endif %}
+            </span>
+            <br>
+            <table class="table table-sm">
+               {% for key, value in pj['rasgos'].items() %}
+               <tr
+                  style="color:{% if loop.index <= 1 %}#000000{% elif loop.index <= 3 %}#6e6e6e{% else %}#bdbdbd{% endif %}">
+                  <td>
+                     {{ key }}
+                  </td>
+                  <td style="text-align: right;">
+                     {{ value }}
+                  </td>
+               </tr>
+               {% endfor %}
+            </table>
+         </div>
+         <div class="card-footer text-center">
+            <small class="text-muted">
+               <b>Iniciativa:</b> {{ pj['iniciativa'] }} - <b>Defensa:</b> {{ pj['defensa'] }}
+            </small>
+         </div>
+      </div>
+
+
+
+       <!-- Habilidades -->
+       <div class="card border-secondary">
+         <div class="card-header p-2">
+            <p class="card-title text-center mb-0 p-0">
+               <b>Habilidades</b>
+            </p>
+         </div>
+         <div class="card-body">
+            <table class="table table-sm">
+               {% for key, value in pj['habilidades'].items() %}
+               <tr
+                  style="color:{% if loop.index <= 3 %}#000000{% elif loop.index <= 6 %}#6e6e6e{% else %}#bdbdbd{% endif %}">
+                  <td>
+                     {{ key }}
+                  </td>
+                  <td style="text-align: right;">
+                     {{ value }}
+                  </td>
+               </tr>
+               {% endfor %}
+            </table>
+         </div>
+      </div>
+
+
        <!-- Inventario -->
        <div class="card border-secondary">
           <div>
@@ -91,33 +149,6 @@
           </div>
        </div>
  
-       <!-- Habilidades -->
-       <div class="card border-secondary">
-          <div class="card-header p-2">
-             <p class="card-title text-center mb-0 p-0">
-                <b>Habilidades</b>
-             </p>
-          </div>
-          <div class="card-body">
-             <table class="table table-sm">
-                {% for key, value in pj['habilidades'].items() %}
-                <tr
-                   style="color:{% if loop.index <= 3 %}#000000{% elif loop.index <= 6 %}#6e6e6e{% else %}#bdbdbd{% endif %}">
-                   <td>
-                      {{ key }}
-                   </td>
-                   <td style="text-align: right;">
-                      {{ value }}
-                   </td>
-                </tr>
-                {% endfor %}
-             </table>
-          </div>
-          <div class="card-footer text-center">
-             <small class="text-muted">
-                <b>Iniciativa:</b> {{ pj['iniciativa'] }} - <b>Defensa:</b> {{ pj['defensa'] }}
-             </small>
-          </div>
-       </div>
+
     </div>
  </div>

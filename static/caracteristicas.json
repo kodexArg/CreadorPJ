@@ -1,0 +1,46 @@
+{
+    "raza": {
+        "1": {
+            "nomb": "moren0",
+            "sexo": 0.5,
+            "peso": 50,
+            "prox": ["ojos"],
+            "proh": []
+        },
+        "2": {
+            "nomb": "caucásic0",
+            "sexo": 0.5,
+            "peso": 50,
+            "prox": [],
+            "proh": []
+        },
+        "3": {
+            "nomb": "asiático",
+            "sexo": 0.5,
+            "peso": 20,
+            "prox": [],
+            "proh": []
+        },
+        "4": {
+            "nomb": "indígena",
+            "sexo": 0.5,
+            "peso": 30,
+            "prox": [],
+            "proh": []
+        },
+        "4": {
+            "nomb": "asiático",
+            "sexo": 0.5,
+            "peso": 20,
+            "prox": [],
+            "proh": []
+        },
+    },
+    "ojos": {
+        "id": 1,
+        "nombre": "moren0",
+        "peso": 50,
+        "prox": [],
+        "proh": []
+    }
+}

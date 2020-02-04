@@ -4,6 +4,7 @@ import pandas as pd
 import numpy as np
 import json
 import random
+from collections import OrderedDict
 
 
 def randomizar_caracteristicas(caracter):
@@ -61,9 +62,8 @@ def randomizar_habilidades(caracter, atributos):
             h_valor = h_wiggle + int(atributos[atribs])  # aumento base
             hlist.append([hkey, int(atributos[atribs]),
                           h_inicial, h_wiggle, h_valor])
-
     df_habilidades = pd.DataFrame(
-        hlist, columns=['HABILIDAD', 'ATR', 'INI', 'WIG', 'VALOR']).sample(n=12)
+        hlist, columns=['HABILIDAD', 'ATR', 'INI', 'WIG', 'VALOR']).sample(n=round((12*(int(caracter['poder'])/40))))
     df_habilidades = df_habilidades[['HABILIDAD', 'VALOR']].set_index(
         'HABILIDAD').sort_values(by=['VALOR'], ascending=False)
     habilidades = df_habilidades.to_dict()
@@ -100,6 +100,7 @@ def randomizar_dinero(caracter):
 
 
 def randomizar_nombre(caracter):
+
     if caracter['sexo'] == 'Mujer':
         nombres = pd.read_csv(os.path.join(
             ct.STATIC_ROOT, 'spanish-names/mujeres.csv'))
@@ -114,26 +115,66 @@ def randomizar_nombre(caracter):
     nombres.drop(todrop, inplace=True)
     nombres_max = np.max(nombres[['frec']])
 
-    pruebas = 0
-    while pruebas < ct.INTENTOS:
-        pruebas += 1
-        test = nombres.sample(n=1)
-        chances_aceptar = np.float(test['frec'].values[0]/nombres_max)
-        if np.random.random() < chances_aceptar:
-            break
-    nombre = test['nombre'].values[0]
-    e = test['edad_media'].values[0]
-    if e < 15:
-        e = 15 + np.random.randint(0, 10)
-    edad = str(int(e))
+    if caracter['opt_nombre']:
+        nombre = str(caracter['opt_nombre'])
+    else:
+        pruebas = 0
+        while pruebas < ct.INTENTOS:
+            pruebas += 1
+            test = nombres.sample(n=1)
+            chances_aceptar = np.float(test['frec'].values[0]/nombres_max)
+            if np.random.random() < chances_aceptar:
+                break
+        nombre = test['nombre'].values[0]
 
-    pruebas = 0
-    while pruebas < ct.INTENTOS:
-        pruebas += 1
-        test = apellidos.sample(n=1)
-        chances_aceptar = np.float(test['frec_pri'].values[0]/nombres_max)
-        if np.random.random() < chances_aceptar:
-            break
-    apellido = test['apellido'].values[0]
+    if caracter['opt_edad']:
+        edad = caracter['opt_edad']
+    else:
+        e = test['edad_media'].values[0]
+        if e < 15:
+            e = 15 + np.random.randint(0, 10)
+        edad = str(int(e))
+
+    if caracter['opt_apellido']:
+        apellido = caracter['opt_apellido']
+    else:
+        pruebas = 0
+        while pruebas < ct.INTENTOS:
+            pruebas += 1
+            test = apellidos.sample(n=1)
+            chances_aceptar = np.float(test['frec_pri'].values[0]/nombres_max)
+            if np.random.random() < chances_aceptar:
+                break
+        apellido = test['apellido'].values[0]
 
     return {'nombre': nombre, 'apellido': apellido, 'edad': edad}
+
+
+def randomizar_rasgos(caracter, atributos, habilidades):
+    rasgos = pd.read_json(os.path.join(ct.STATIC_ROOT, 'rasgos.json'))
+    rasgo_aceptado = {}
+    for i, row in rasgos.iteritems():
+
+        rasgo = i
+        habil_asociado = row[0]
+        atrib_asociado = row[1]
+        proba_asociado = row[2]
+
+        # debe tener las habilidades asociadas
+        if set(habil_asociado).issubset(set(list(habilidades.keys()))):
+            # mayor chance entre mayor su atributo asociado
+            if atributos[atrib_asociado] >= np.random.randint(4, 10):
+                rasgo_valor = max([habilidades[h] for h in habil_asociado]) + np.random.randint(0, proba_asociado)
+            
+                if caracter['sexo'] == "Mujer": #esto falla DRY, por lo menos lo hace sólo en aciertos
+                    rasgo = [w.replace('0', 'a') for w in rasgo]
+                    rasgo = [w.replace('1', 'a') for w in rasgo]
+                else:
+                    rasgo = [w.replace('0', 'o') for w in rasgo]
+                    rasgo = [w.replace('1', '') for w in rasgo]
+
+                rasgo_aceptado[''.join(rasgo)] =  rasgo_valor
+
+    rasgos = OrderedDict(rasgo_aceptado)
+
+    return rasgos

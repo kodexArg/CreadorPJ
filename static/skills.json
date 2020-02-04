@@ -2,7 +2,9 @@
     "Cultista": {
        "FÍSICO": {
            "Lucha": "2",
-           "Armas Pesadas": "2"
+           "Armas Pesadas": "2",
+           "Resistencia": "1",
+           "Intimidar": "4"
        },
        "ASTUCIA": {
            "Sigilo": "1"
@@ -14,7 +16,7 @@
        },
        "MAGIA": {
            "Vision Bruja": "3",
-           "Sexto Sentido": "1",
+           "Sexto Sentido": "2",
            "Espiritismo": "3",
            "Ocultismo": "3",
            "Hipnotismo": "2"
@@ -24,7 +26,7 @@
            "Rastrear": "1",
            "Reflejos": "1",
            "En guardia": "2",
-           "Armas Precisión": "1"
+           "Armas de Precisión": "1"
        },
        "VOLUNTAD": {
            "Religion": "4",
@@ -64,7 +66,8 @@
             "Cabalgar": "1",
             "Conducir": "2",
             "Armas Pequeñas": "2",
-            "Armas Medianas": "2"
+            "Armas Medianas": "2",
+            "Trepar": "2"
         },
         "MAGIA": {
         },
@@ -73,7 +76,7 @@
             "Rastrear": "1",
             "Reflejos": "2",
             "En guardia": "2",
-            "Armas Precisión": "1"
+            "Armas de Precisión": "1"
         },
         "VOLUNTAD": {
             "Religion": "2",
@@ -250,7 +253,7 @@
             "Rastrear": "2",
             "Reflejos": "2",
             "En guardia": "1",
-            "Armas Precisión": "3"
+            "Armas de Precisión": "3"
         },
         "VOLUNTAD": {
             "Religion": "1",

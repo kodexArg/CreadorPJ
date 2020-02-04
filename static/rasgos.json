@@ -1,0 +1,113 @@
+{
+    "Psiquiatra": {
+        "H": ["Sanación"],
+        "A": "EDUCACIÓN",
+        "P": 5
+    },
+    "Albañil": {
+        "H": ["Resistencia"],
+        "A": "FÍSICO",
+        "P": 5
+    },
+    "Profesor": {
+        "H": ["Don de Gente"],
+        "A": "EDUCACIÓN",
+        "P": 5
+    },
+    "Maestro de Escuela": {
+        "H": ["Don de Gente"],
+        "A": "EDUCACIÓN",
+        "P": 5
+    },
+    "Cazarecompensas": {
+        "H": ["Rastrear", "Advertir-Notar"],
+        "A": "PERCEPCIÓN",
+        "P": 5
+    },
+    "Francotirador1": {
+        "H": ["Concentración", "Armas de Precisión"],
+        "A": "DESTREZA",
+        "P": 4
+    },
+    "Psicólog0": {
+        "H": ["Sanación"],
+        "A": "EDUCACIÓN",
+        "P": 5
+    },
+    "Boxeador1": {
+        "H": ["Lucha"],
+        "A": "FÍSICO",
+        "P": 5
+    },
+    "Karateca": {
+        "H": ["Lucha"],
+        "A": "DESTREZA",
+        "P": 5
+    },
+    "Medium": {
+        "H": ["Espiritismo"],
+        "A": "MAGIA",
+        "P": 5
+    },
+    "Detective paranormal": {
+        "H": ["Sexto Sentido", "Ocultismo"],
+        "A": "EDUCACIÓN",
+        "P": 5
+    },
+    "Vidente": {
+        "H": ["Sexto Sentido", "Espiritismo"],
+        "A": "MAGIA",
+        "P": 5
+    },
+    "Líder": {
+        "H": ["Don de Gente", "Don de Mando"],
+        "A": "CARISMA",
+        "P": 5
+    },
+    "Deportista de alto rendimiento": {
+        "H": ["Atletismo", "Resistencia"],
+        "A": "DESTREZA",
+        "P": 5
+    },
+    "Alpinista": {
+        "H": ["Resistencia", "Trepar"],
+        "A": "FISICO",
+        "P": 5
+    },
+    "Pistoler0": {
+        "H": ["Armas Pequeñas"],
+        "A": "DESTREZA",
+        "P": 4
+    },
+    "Predicador1": {
+        "H": ["Religión", "Don de Gente"],
+        "A": "CARISMA",
+        "P": 5
+    },
+    "Faquir": {
+        "H": ["Coraje", "Resistir el Dolor"],
+        "A": "VOLUNTAD",
+        "P": 5
+    },
+    "Masoquista": {
+        "H": ["Coraje", "Resistir el Dolor"],
+        "A": "VOLUNTAD",
+        "P": 5
+    },
+    "Arquero": {
+        "H": ["Armas de Precisión"],
+        "A": "DESTREZA",
+        "P": 8
+    },
+    "Interrogador": {
+        "H": ["Intimidar", "Advertir-Notar"],
+        "A": "VOLUNTAD",
+        "P": 5
+    },
+    "Enfermero": {
+        "H": ["Sanación"],
+        "A": "EDUCACIÓN",
+        "P": 5
+    }
+
+}
