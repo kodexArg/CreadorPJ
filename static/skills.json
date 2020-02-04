@@ -266,5 +266,51 @@
             "Sabiduría Popular": "1",
             "Sanación": "1"
         }
+    },
+    "Médico": {
+        "FÍSICO": {
+            "Atletismo": "1",
+            "Armas Pesadas": "1",
+            "Supervivencia": "2"
+        },
+        "ASTUCIA": {
+            "Robo": "1",
+            "Sigilo": "1"
+        },
+        "DESTREZA": {
+            "Esquivar": "1",
+            "Conducir": "1",
+            "Armas Pequeñas": "2",
+            "Armas Medianas": "1"
+        },
+        "MAGIA": {
+            "Sexto Sentido": "1",
+            "Visión Bruja": "1",
+            "Espiritismo": "1",
+            "Ocultismo": "1",
+            "Hipnotismo": "2"
+        },
+        "PERCEPCIÓN": {
+            "Advertir-Notar": "4",
+            "Buscar-Investigar": "4",
+            "En guardia": "5",
+            "Reflejos": "1"
+        },
+        "VOLUNTAD": {
+            "Coraje": "4",
+            "Concentracion": "2"
+        },
+        "CARISMA": {
+            "Mentir": "1",
+            "Don de Gente": "2",
+            "Don de Mando": "1",
+            "Cotilleo-rumor": "2",
+            "Etiqueta": "3"
+        },
+        "EDUCACIÓN": {
+            "Tecnología": "2",
+            "Sabiduría Popular": "3",
+            "Sanación": "7"
+        }
     }
 }

@@ -58,5 +58,15 @@
       "VOLUNTAD": 0.09,
       "CARISMA": 0.09,
       "EDUCACIÓN": 0.09
-   }
+   },
+   "Médico": {
+      "FÍSICO": 0.11,
+      "ASTUCIA": 0.11,
+      "DESTREZA": 0.13,
+      "MAGIA": 0.11,
+      "PERCEPCIÓN": 0.16,
+      "VOLUNTAD": 0.12,
+      "CARISMA": 0.09,
+      "EDUCACIÓN": 0.17
+    }
  }
